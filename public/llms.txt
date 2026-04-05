@@ -1,0 +1,47 @@
+# Yash Darji — Freelance Backend Engineer & AI Developer
+
+> Available for freelance and contract work. Building AI agents, RAG systems, and scalable APIs that ship to real users.
+
+## About
+
+Yash Darji is a backend engineer specialising in AI-powered systems and production-grade APIs. He has shipped large-scale crawlers, LLM-driven chatbots, itinerary planners, and semantic search systems used by real customers. He is currently open to freelance engagements, contract roles, and collaborative projects.
+
+- Email: yash.darji.coder@gmail.com
+- LinkedIn: https://in.linkedin.com/in/yash-darji
+- GitHub: https://github.com/yshraj
+- Portfolio: https://yash-builds-ai.netlify.app/
+
+## Services
+
+- AI Agent development (LangGraph, LangChain, OpenAI, Gemini)
+- RAG pipeline design and implementation (Qdrant, vector search, semantic retrieval)
+- Backend API development (Node.js, Python, FastAPI, Express)
+- Web crawlers and data ingestion pipelines
+- LLM integrations and chatbot systems
+- Full-stack feature development
+
+## Skills & Tools
+
+Node.js, Python, FastAPI, Express, TypeScript, JavaScript, PostgreSQL, MongoDB, Redis, Docker, Supabase, LangGraph, LangChain, OpenAI API, Gemini, Qdrant, RAG, REST APIs, React, Next.js
+
+## Selected Projects
+
+- **DocuChat** — RAG-based document Q&A system with semantic search and source citations
+- **VectorIngest** — Automated document ingestion pipeline for vector databases
+- **JARVIS** — Personal AI assistant with tool use and memory
+- **AI Live Chat** — LLM-powered customer support agent
+- **Itinerary Agent** — LangGraph-orchestrated travel planner used in production at Milestone Inc.
+- **OptiSense** — Sensor data analytics platform with AI anomaly detection
+- **Real Estate Chatbot** — Property search assistant with natural language querying
+- **Bank QA Bot** — Financial document Q&A with compliance-aware retrieval
+- **SmartStock Scout** — AI stock sentiment analysis using HuggingFace and Yahoo Finance
+
+## Experience
+
+- **Backend Engineer — Milestone Inc. (2023–2026):** Led large-scale web crawlers (millions of URLs/week), built REST APIs for AI ingestion, deployed production chatbots and itinerary planners using LangGraph, FastAPI, and OpenAI. Achieved 40% infrastructure cost reduction.
+- **SDE Intern — Milestone Inc. (2023):** Built FAQ Manager product with automated generation, reducing manual effort by 25%.
+- **ML Intern — Canary Mail (2022):** Developed NLP models for phishing email and malicious link detection, improving email security by 30%.
+
+## Education
+
+B.Tech Computer Science & Engineering, Nirma University, Ahmedabad — 2019–2023 (CPI: 8.4/10)
