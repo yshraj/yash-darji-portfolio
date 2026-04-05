@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(xxd \"d:/3d-portfolio/public/images/placeholder.webp\")",
+      "Bash(curl -s -o python.svg \"https://cdn.simpleicons.org/python\")",
+      "Bash(curl -s -o fastapi.svg \"https://cdn.simpleicons.org/fastapi\")",
+      "Bash(curl -s -o docker.svg \"https://cdn.simpleicons.org/docker\")",
+      "Bash(curl -s -o supabase.svg \"https://cdn.simpleicons.org/supabase\")",
+      "Bash(curl -s -o openai.svg \"https://cdn.simpleicons.org/openai/white\")",
+      "Bash(curl -s -o qdrant.svg \"https://cdn.simpleicons.org/qdrant\")",
+      "Bash(ls -la *.svg)",
+      "Bash(curl -s -o openai.svg \"https://cdn.simpleicons.org/openai\")",
+      "Bash(curl -v \"https://cdn.simpleicons.org/openai\")",
+      "Bash(curl -s -o redis.svg \"https://cdn.simpleicons.org/redis\")",
+      "Bash(curl -s -o gemini.svg \"https://cdn.simpleicons.org/googlegemini\")",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl -s https://raw.githubusercontent.com/akashrmalhotra/3d-portfolio/main/src/components/WhatIDo.tsx)",
+      "Bash(curl -s https://raw.githubusercontent.com/akashrmalhotra/3d-portfolio/main/src/components/styles/WhatIDo.css)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/akashrmalhotra/3d-portfolio/main/src/components/Work.tsx\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/akashrmalhotra/3d-portfolio/main/src/components/styles/Work.css\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/akashrmalhotra/3d-portfolio/main/src/components/WorkImage.tsx\")",
+      "Bash(node -e ':*)",
+      "Bash(npx tsc:*)",
+      "Bash(ls \"d:/3d-portfolio/\"*.png)"
+    ]
+  }
+}
