@@ -225,6 +225,8 @@ const TechStack = () => {
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
         className="tech-canvas"
+        aria-label="Interactive 3D tech stack visualization showing skills: React, Next.js, Node.js, Python, FastAPI, TypeScript, Docker, MongoDB, Redis, Qdrant, Supabase, LangChain, and Gemini"
+        role="img"
       >
         <ambientLight intensity={1.5} />
         <spotLight

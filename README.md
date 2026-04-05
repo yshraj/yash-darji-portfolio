@@ -1,5 +1,7 @@
 # Yash Darji — 3D Portfolio
 
+**Live site: [yash-builds-ai.netlify.app](https://yash-builds-ai.netlify.app/)**
+
 Personal portfolio built with React, TypeScript, Three.js, React Three Fiber, and GSAP. Features a 3D character scene, scroll-driven animations, custom cursor interactions, and a project showcase.
 
 ![Portfolio Preview](public/images/preview.png)

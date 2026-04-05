@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className="about-section" id="about">
       <div className="about-me">
-        <h3 className="title">About Me</h3>
+        <h2 className="title">About Me</h2>
         <p className="para">
           I'm Yash Darji — a backend engineer who builds AI agents, RAG systems,
           and scalable APIs that ship to real users. I specialise in Node.js,

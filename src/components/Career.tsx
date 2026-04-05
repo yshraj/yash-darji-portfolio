@@ -15,10 +15,10 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Backend Engineer</h4>
-                <h5>Milestone Inc.</h5>
+                <h3>Backend Engineer</h3>
+                <p className="career-company">Milestone Inc.</p>
               </div>
-              <h3>2023–26</h3>
+              <time className="career-date" dateTime="2023/2026">2023–26</time>
             </div>
             <p>
               Led development of a large-scale web crawler scanning millions of URLs
@@ -30,10 +30,10 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>SDE Intern</h4>
-                <h5>Milestone Inc.</h5>
+                <h3>SDE Intern</h3>
+                <p className="career-company">Milestone Inc.</p>
               </div>
-              <h3>2023</h3>
+              <time className="career-date" dateTime="2023">2023</time>
             </div>
             <p>
               Built the FAQ Manager product for managing FAQs across websites and
@@ -44,10 +44,10 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>ML Intern</h4>
-                <h5>Canary Mail</h5>
+                <h3>ML Intern</h3>
+                <p className="career-company">Canary Mail</p>
               </div>
-              <h3>2022</h3>
+              <time className="career-date" dateTime="2022">2022</time>
             </div>
             <p>
               Developed NLP models to detect phishing emails and malicious links using

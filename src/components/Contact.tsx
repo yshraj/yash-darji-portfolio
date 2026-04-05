@@ -5,10 +5,10 @@ const Contact = () => {
   return (
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
-        <h3>Contact</h3>
+        <h2>Contact</h2>
         <div className="contact-flex">
           <div className="contact-box">
-            <h4>Connect</h4>
+            <h3>Connect</h3>
             <p>
               <a
                 href="https://in.linkedin.com/in/yash-darji"
@@ -19,14 +19,14 @@ const Contact = () => {
                 LinkedIn — in/yash-darji
               </a>
             </p>
-            <h4>Education</h4>
+            <h3>Education</h3>
             <p>
               B.Tech Computer Science &amp; Engineering, Nirma University,
               Ahmedabad — 2019–2023 (CPI: 8.4/10)
             </p>
           </div>
           <div className="contact-box">
-            <h4>Social</h4>
+            <h3>Social</h3>
             <a
               href="https://github.com/yshraj"
               target="_blank"
@@ -54,12 +54,12 @@ const Contact = () => {
             </a>
           </div>
           <div className="contact-box">
-            <h2>
+            <p className="footer-credit">
               Designed and Developed <br /> by <span>Yash Darji</span>
-            </h2>
-            <h5>
+            </p>
+            <p className="footer-copyright">
               <MdCopyright /> 2026
-            </h5>
+            </p>
           </div>
         </div>
       </div>
