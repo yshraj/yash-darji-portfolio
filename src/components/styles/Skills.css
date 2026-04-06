@@ -1,0 +1,281 @@
+/* ─── Section ─────────────────────────────────────────────────── */
+.skills-section {
+  width: 1400px;
+  max-width: calc(100% - 120px);
+  margin: auto;
+  padding: 100px 0 160px;
+}
+
+.skills-heading {
+  font-size: clamp(44px, 5vw, 70px);
+  line-height: 1;
+  font-weight: 400;
+  margin: 0 0 52px 0;
+  background: linear-gradient(0deg, #0d9488, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.skills-heading span {
+  font-style: italic;
+}
+
+/* ─── Bento grid ──────────────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 190px 190px 110px;
+  gap: 14px;
+}
+
+/* Bento layout: wide, normal / normal, wide / full */
+.skills-card:nth-child(1) { grid-column: span 2; }
+.skills-card:nth-child(2) { grid-column: span 1; }
+.skills-card:nth-child(3) { grid-column: span 1; }
+.skills-card:nth-child(4) { grid-column: span 2; }
+.skills-card:nth-child(5) { grid-column: span 3; }
+
+/* ─── Card base ───────────────────────────────────────────────── */
+.skills-card {
+  position: relative;
+  padding: 26px 30px 24px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(
+      ellipse at 0% 0%,
+      color-mix(in srgb, var(--card-color) 7%, transparent),
+      transparent 65%
+    ),
+    rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  cursor: default;
+  transition:
+    transform    0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow   0.38s ease,
+    border-color 0.38s ease,
+    background   0.38s ease;
+}
+
+/* Faint oversized ghost text in card background */
+.skills-card::after {
+  content: attr(data-cat);
+  position: absolute;
+  bottom: -16px;
+  right: -8px;
+  font-size: clamp(60px, 7vw, 100px);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--card-color);
+  opacity: 0.05;
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+  transition: opacity 0.38s ease;
+}
+
+/* Accent glow line on top edge */
+.skills-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--card-color),
+    transparent
+  );
+  opacity: 0.35;
+  transition: opacity 0.38s ease, left 0.38s ease, right 0.38s ease;
+}
+
+/* ─── Card hover ──────────────────────────────────────────────── */
+.skills-card:hover {
+  transform: translateY(-8px);
+  border-color: color-mix(in srgb, var(--card-color) 38%, transparent);
+  background:
+    radial-gradient(
+      ellipse at 0% 0%,
+      color-mix(in srgb, var(--card-color) 14%, transparent),
+      transparent 65%
+    ),
+    rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    0 0 50px -15px var(--card-color);
+}
+
+.skills-card:hover::before {
+  opacity: 0.9;
+  left: 5%;
+  right: 5%;
+}
+
+.skills-card:hover::after {
+  opacity: 0.1;
+}
+
+/* ─── Card inner ──────────────────────────────────────────────── */
+.skills-card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.skills-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skills-card-num {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--card-color);
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+}
+
+.skills-card-desc {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skills-card-cat {
+  font-size: clamp(24px, 2.6vw, 40px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.35s ease;
+  letter-spacing: -0.01em;
+}
+
+.skills-card:hover .skills-card-cat {
+  color: var(--card-color);
+}
+
+/* ─── Chips ───────────────────────────────────────────────────── */
+.skills-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.skills-chip {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  padding: 6px 15px;
+  transition:
+    background     0.3s ease,
+    border-color   0.3s ease,
+    color          0.3s ease;
+}
+
+.skills-card:hover .skills-chip {
+  background: color-mix(in srgb, var(--card-color) 12%, transparent);
+  border-color: color-mix(in srgb, var(--card-color) 40%, transparent);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ─── Full-width Infra card: horizontal layout ────────────────── */
+.skills-card:nth-child(5) {
+  flex-direction: row;
+  align-items: center;
+  gap: 48px;
+}
+
+.skills-card:nth-child(5) .skills-card-top {
+  gap: 8px;
+  min-width: 220px;
+  flex-shrink: 0;
+}
+
+.skills-card:nth-child(5) .skills-card-cat {
+  font-size: clamp(28px, 2.8vw, 44px);
+}
+
+.skills-card:nth-child(5) .skills-chips {
+  flex: 1;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media only screen and (max-width: 1100px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .skills-card {
+    min-height: 160px;
+  }
+
+  .skills-card:nth-child(1) { grid-column: span 1; }
+  .skills-card:nth-child(2) { grid-column: span 1; }
+  .skills-card:nth-child(3) { grid-column: span 1; }
+  .skills-card:nth-child(4) { grid-column: span 1; }
+  .skills-card:nth-child(5) { grid-column: span 2; }
+}
+
+@media only screen and (max-width: 700px) {
+  .skills-section {
+    padding: 70px 0 100px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 12px;
+  }
+
+  .skills-card:nth-child(n) {
+    grid-column: span 1;
+    min-height: auto;
+  }
+
+  .skills-card:nth-child(5) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .skills-card:nth-child(5) .skills-card-top {
+    min-width: unset;
+  }
+
+  .skills-card::after {
+    font-size: 70px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .skills-card {
+    padding: 24px 22px 22px;
+    border-radius: 16px;
+  }
+}
