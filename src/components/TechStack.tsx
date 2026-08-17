@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Environment } from "@react-three/drei";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
 import {
@@ -10,6 +11,7 @@ import {
   CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
+import "./styles/TechStack.css";
 
 const textureLoader = new THREE.TextureLoader();
 
@@ -176,28 +178,17 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
 
+  // Only run the physics solver while the section is anywhere near the viewport.
+  // ScrollTrigger reads ScrollSmoother's transformed positions, which a raw
+  // scroll listener does not.
   useEffect(() => {
-    const handleScroll = () => {
-      const workEl = document.getElementById("work");
-      if (!workEl) return;
-      const rect = workEl.getBoundingClientRect();
-      setIsActive(rect.top < window.innerHeight * 0.8);
-    };
-    document.querySelectorAll(".header a").forEach((elem) => {
-      const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", () => {
-        const interval = setInterval(() => {
-          handleScroll();
-        }, 10);
-        setTimeout(() => {
-          clearInterval(interval);
-        }, 1000);
-      });
+    const trigger = ScrollTrigger.create({
+      trigger: ".techstack",
+      start: "top bottom+=40%",
+      end: "bottom top-=40%",
+      onToggle: (self) => setIsActive(self.isActive),
     });
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => trigger.kill();
   }, []);
   const materials = useMemo(() => {
     return textures.map(
@@ -216,9 +207,10 @@ const TechStack = () => {
   }, []);
 
   return (
-    <div className="techstack">
-      <h2> My Techstack</h2>
-
+    <section className="techstack" aria-labelledby="techstack-title">
+      <h2 className="visually-hidden" id="techstack-title">
+        Tech stack
+      </h2>
       <Canvas
         shadows
         gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
@@ -260,7 +252,7 @@ const TechStack = () => {
           <N8AO color="#0f002c" aoRadius={2} intensity={1.15} />
         </EffectComposer>
       </Canvas>
-    </div>
+    </section>
   );
 };
 

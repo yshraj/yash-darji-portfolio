@@ -1,0 +1,200 @@
+/* Design tokens + shared primitives.
+   Everything below is consumed by the section stylesheets — change it here, not there. */
+
+:root {
+  /* Surfaces: near-black with a cold blue cast so the teal accent stays warm against it */
+  --bg: #0a0e17;
+  --bg-deep: #050810;
+  --bg-raised: #10151f;
+
+  /* Ink */
+  --ink: #eae5ec;
+  --ink-2: #a8b0bd;
+  --ink-3: #6b7482;
+
+  /* Hairlines. The design leans on rules instead of cards, so these carry a lot of weight. */
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.18);
+
+  --accent: #5eead4;
+  --accent-deep: #14b8a6;
+  --accent-wash: rgba(94, 234, 212, 0.09);
+
+  --font-sans: "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
+
+  /* Fluid type scale, 390px → 1600px */
+  --t-display: clamp(3rem, 1.2rem + 7.6vw, 8.5rem);
+  --t-h2: clamp(2.25rem, 1.1rem + 4.9vw, 5.5rem);
+  --t-h3: clamp(1.375rem, 1rem + 1.6vw, 2.25rem);
+  --t-lead: clamp(1.125rem, 0.95rem + 0.8vw, 1.625rem);
+  --t-body: clamp(0.9375rem, 0.88rem + 0.25vw, 1.0625rem);
+  --t-meta: 0.8125rem;
+
+  --tracking-label: 0.18em;
+
+  /* Horizontal shell. The gutter has to stay wider than the fixed social rail
+     on the left, or section content slides underneath it. */
+  --shell-gutter: clamp(1.25rem, 8vw, 7.5rem);
+  --shell-w: min(1400px, calc(100% - var(--shell-gutter) * 2));
+
+  /* Vertical rhythm. vh-based so it breathes on tall screens, capped so a
+     1180px-tall tablet does not open a dead zone between sections. */
+  --gap-section: clamp(4.5rem, 9vh, 8rem);
+  --gap-block: clamp(2.5rem, 5vw, 5rem);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ── Layout shell ─────────────────────────────────────────────── */
+
+.shell {
+  width: var(--shell-w);
+  margin-inline: auto;
+}
+
+/* ── Section header: mono index label + rule + display heading ─── */
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+  margin-bottom: var(--gap-block);
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+.section-label::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: var(--accent);
+  flex: none;
+}
+
+.section-title {
+  font-size: var(--t-h2);
+  line-height: 0.94;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.section-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+/* ── Type primitives ──────────────────────────────────────────── */
+
+.lede {
+  font-size: var(--t-lead);
+  line-height: 1.55;
+  font-weight: 300;
+  color: var(--ink-2);
+  max-width: 46ch;
+  text-wrap: pretty;
+}
+
+.body-copy {
+  font-size: var(--t-body);
+  line-height: 1.65;
+  font-weight: 300;
+  color: var(--ink-2);
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+.mono-meta {
+  font-family: var(--font-mono);
+  font-size: var(--t-meta);
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+
+/* ── Tag ──────────────────────────────────────────────────────── */
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding: 0.45em 0.7em;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--ink-2);
+  white-space: nowrap;
+  transition: border-color 0.3s var(--ease-out), color 0.3s var(--ease-out);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* ── Link button ──────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding: 0.75rem 1.1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out),
+    color 0.3s var(--ease-out);
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  color: var(--accent);
+}
+
+.btn-primary {
+  border-color: rgba(94, 234, 212, 0.45);
+  background: var(--accent-wash);
+  color: var(--accent);
+}
+
+/* ── Focus ────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Motion preferences ───────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

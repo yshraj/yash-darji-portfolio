@@ -1,69 +1,71 @@
-import { MdArrowOutward, MdCopyright } from "react-icons/md";
+import { MdArrowOutward } from "react-icons/md";
 import "./styles/Contact.css";
+
+const EMAIL = "yash.darji.coder@gmail.com";
+
+const ELSEWHERE = [
+  { label: "GitHub", href: "https://github.com/yshraj" },
+  { label: "LinkedIn", href: "https://in.linkedin.com/in/yash-darji" },
+  { label: "Résumé", href: "/Yash-Darji_Resume.pdf" },
+];
 
 const Contact = () => {
   return (
-    <div className="contact-section section-container" id="contact">
+    <footer className="contact-section" id="contact" aria-labelledby="contact-title">
       <div className="contact-container">
-        <h2>Contact</h2>
-        <div className="contact-flex">
-          <div className="contact-box">
-            <h3>Connect</h3>
+        <div className="section-head" data-reveal>
+          <p className="section-label">Contact</p>
+          <h2 className="section-title" id="contact-title">
+            Got something that has to <em>hold up</em> in production?
+          </h2>
+        </div>
+
+        <a className="contact-email" data-reveal href={`mailto:${EMAIL}`} data-cursor="disable">
+          <span>{EMAIL}</span>
+          <MdArrowOutward aria-hidden="true" />
+        </a>
+
+        <div className="contact-meta" data-reveal>
+          <div className="contact-col">
+            <h3>Elsewhere</h3>
+            <ul>
+              {ELSEWHERE.map(({ label, href }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="disable"
+                  >
+                    {label}
+                    <MdArrowOutward aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="contact-col">
+            <h3>Currently</h3>
             <p>
-              <a
-                href="https://in.linkedin.com/in/yash-darji"
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="disable"
-              >
-                LinkedIn — in/yash-darji
-              </a>
-            </p>
-            <h3>Education</h3>
-            <p>
-              B.Tech Computer Science &amp; Engineering, Nirma University,
-              Ahmedabad — 2019–2023 (CPI: 8.4/10)
+              Senior AI Engineer at WebileApps,
+              <br />
+              on a client engagement with Celigo.
             </p>
           </div>
-          <div className="contact-box">
-            <h3>Social</h3>
-            <a
-              href="https://github.com/yshraj"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              GitHub <MdArrowOutward />
-            </a>
-            <a
-              href="https://in.linkedin.com/in/yash-darji"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              LinkedIn <MdArrowOutward />
-            </a>
-            <a
-              href="mailto:yash.darji.coder@gmail.com"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Email <MdArrowOutward />
-            </a>
-          </div>
-          <div className="contact-box">
-            <p className="footer-credit">
-              Designed and Developed <br /> by <span>Yash Darji</span>
+
+          <div className="contact-col contact-colophon">
+            <h3>Colophon</h3>
+            <p>
+              Designed and built by <span>Yash Darji</span>.
+              <br />
+              React, three.js, and GSAP.
             </p>
-            <p className="footer-copyright">
-              <MdCopyright /> 2026
-            </p>
+            <p className="contact-copyright">© 2026</p>
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

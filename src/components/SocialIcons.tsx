@@ -63,8 +63,9 @@ const SocialIcons = () => {
             href="https://github.com/yshraj"
             target="_blank"
             rel="noreferrer"
+            aria-label="GitHub profile"
           >
-            <FaGithub />
+            <FaGithub aria-hidden="true" />
           </a>
         </span>
         <span>
@@ -72,13 +73,17 @@ const SocialIcons = () => {
             href="https://in.linkedin.com/in/yash-darji"
             target="_blank"
             rel="noreferrer"
+            aria-label="LinkedIn profile"
           >
-            <FaLinkedinIn />
+            <FaLinkedinIn aria-hidden="true" />
           </a>
         </span>
         <span>
-          <a href="mailto:yash.darji.coder@gmail.com">
-            <MdEmail />
+          <a
+            href="mailto:yash.darji.coder@gmail.com"
+            aria-label="Email Yash Darji"
+          >
+            <MdEmail aria-hidden="true" />
           </a>
         </span>
       </div>

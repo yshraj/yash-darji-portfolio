@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
@@ -8,7 +8,17 @@ import "./styles/Navbar.css";
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 export let smoother: ScrollSmoother;
 
+const LINKS = [
+  { id: "about", label: "About" },
+  { id: "career", label: "Career" },
+  { id: "work", label: "Work" },
+  { id: "contact", label: "Contact" },
+];
+
 const Navbar = () => {
+  const [active, setActive] = useState<string>("");
+  const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
@@ -23,55 +33,65 @@ const Navbar = () => {
     smoother.scrollTop(0);
     smoother.paused(true);
 
-    let links = document.querySelectorAll(".header ul a");
-    links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
-        }
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: ".landing-section",
+        start: "bottom 90%",
+        onEnter: () => setScrolled(true),
+        onLeaveBack: () => setScrolled(false),
+      });
+
+      LINKS.forEach(({ id }) => {
+        if (!document.getElementById(id)) return;
+        ScrollTrigger.create({
+          trigger: `#${id}`,
+          start: "top 55%",
+          end: "bottom 45%",
+          onToggle: (self) => self.isActive && setActive(id),
+        });
       });
     });
-    window.addEventListener("resize", () => {
-      ScrollSmoother.refresh(true);
-    });
+
+    const onResize = () => ScrollSmoother.refresh(true);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      ctx.revert();
+    };
   }, []);
+
+  const jumpTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (window.innerWidth <= 1024 || !smoother) return;
+    e.preventDefault();
+    smoother.scrollTo(`#${id}`, true, "top top");
+  };
+
   return (
     <>
-      <div className="header">
+      <header className={`header${scrolled ? " header-scrolled" : ""}`}>
         <a href="/#" className="navbar-title" data-cursor="disable">
           YD
+          <span className="navbar-dot" aria-hidden="true" />
         </a>
-        <a
-          href="https://in.linkedin.com/in/yash-darji"
-          className="navbar-connect"
-          data-cursor="disable"
-          target="_blank"
-          rel="noreferrer"
-        >
-          in.linkedin.com/in/yash-darji
-        </a>
-        <ul>
-          <li>
-            <a data-href="#about" href="#about">
-              <HoverLinks text="ABOUT" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#contact" href="#contact">
-              <HoverLinks text="CONTACT" />
-            </a>
-          </li>
-        </ul>
-      </div>
+
+        <nav aria-label="Sections">
+          <ul>
+            {LINKS.map(({ id, label }) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  onClick={(e) => jumpTo(e, id)}
+                  aria-current={active === id ? "true" : undefined}
+                  className={active === id ? "nav-active" : undefined}
+                >
+                  <HoverLinks text={label} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </header>
 
       <div className="landing-circle1"></div>
       <div className="landing-circle2"></div>

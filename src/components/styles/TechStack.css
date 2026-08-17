@@ -1,0 +1,18 @@
+/* A playful interlude between the toolkit list and the footer: the same stack,
+   dropped into a physics well you can push around. Purely decorative — the
+   readable version of this content is the Toolkit section above. */
+.techstack {
+  position: relative;
+  width: 100%;
+  height: min(52vh, 470px);
+  margin: auto;
+  /* Pulls the well up under the projects list so the spheres do not settle
+     into an empty band of page. */
+  margin-top: calc(var(--gap-section) * -1);
+  overflow: clip;
+}
+
+.tech-canvas {
+  position: relative;
+  z-index: 1;
+}

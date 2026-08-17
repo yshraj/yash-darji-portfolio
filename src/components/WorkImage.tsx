@@ -1,49 +1,30 @@
 import { useState } from "react";
-import { MdArrowOutward } from "react-icons/md";
 
 interface Props {
   image?: string;
-  alt?: string;
-  link?: string;
+  alt: string;
 }
 
-const WorkImage = ({ image, alt, link }: Props) => {
-  const [imgError, setImgError] = useState(false);
+const WorkImage = ({ image, alt }: Props) => {
+  const [failed, setFailed] = useState(false);
 
-  const content = (
-    <>
-      {link && (
-        <div className="project-image-link-icon">
-          <MdArrowOutward />
-        </div>
-      )}
-      {image && !imgError ? (
-        <img src={image} alt={alt} onError={() => setImgError(true)} />
-      ) : (
-        <div className="project-image-fallback">
-          <span>{alt}</span>
-        </div>
-      )}
-    </>
-  );
-
-  if (link) {
+  if (!image || failed) {
     return (
-      <a
-        className="project-image-box"
-        href={link}
-        target="_blank"
-        rel="noreferrer"
-        data-cursor="disable"
-      >
-        {content}
-      </a>
+      <div className="project-shot project-shot-empty" aria-hidden="true">
+        <span>{alt}</span>
+      </div>
     );
   }
 
   return (
-    <div className="project-image-box" data-cursor="disable">
-      {content}
+    <div className="project-shot">
+      <img
+        src={image}
+        alt={`${alt} interface`}
+        loading="lazy"
+        decoding="async"
+        onError={() => setFailed(true)}
+      />
     </div>
   );
 };
